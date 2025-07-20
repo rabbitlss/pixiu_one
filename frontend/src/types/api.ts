@@ -6,6 +6,33 @@ export interface ApiResponse<T = any> {
   code?: string | number
 }
 
+// 认证相关类型
+export interface LoginRequest {
+  username: string
+  password: string
+}
+
+export interface RegisterRequest {
+  username: string
+  email: string
+  password: string
+}
+
+export interface AuthResponse {
+  access_token: string
+  token_type: string
+  expires_in: number
+  user: User
+}
+
+export interface User {
+  id: string
+  username: string
+  email: string
+  is_active: boolean
+  created_at: string
+}
+
 // 分页参数
 export interface PaginationParams {
   page: number
@@ -23,17 +50,16 @@ export interface PaginatedResponse<T> {
 
 // 股票相关类型
 export interface Stock {
-  id: string
-  code: string
+  id: number
+  symbol: string
   name: string
-  currentPrice: number
-  changeAmount: number
-  changePercent: number
-  volume: number
-  marketCap: number
-  pe?: number
-  pb?: number
-  updatedAt: string
+  exchange: string
+  sector: string
+  industry: string
+  market_cap?: number
+  is_active: boolean
+  created_at: string
+  updated_at?: string
 }
 
 export interface StockPrice {
@@ -47,11 +73,9 @@ export interface StockPrice {
 
 export interface StockDetail extends Stock {
   description?: string
-  industry?: string
-  sector?: string
   employees?: number
   website?: string
-  prices: StockPrice[]
+  prices?: StockPrice[]
   technicalIndicators?: {
     ma5: number
     ma10: number

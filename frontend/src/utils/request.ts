@@ -90,8 +90,9 @@ const handleHttpError = (error: AxiosError<ApiResponse>) => {
       break
     case 401:
       message.error('登录已过期，请重新登录')
-      // 清除本地 token
+      // 清除本地 token 和用户信息
       localStorage.removeItem('token')
+      localStorage.removeItem('user')
       // 跳转到登录页面
       window.location.href = '/login'
       break

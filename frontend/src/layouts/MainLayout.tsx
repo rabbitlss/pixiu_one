@@ -79,9 +79,18 @@ const MainLayout: React.FC = () => {
         // TODO: 实现个人资料页面
         break
       case 'logout':
-        // TODO: 实现退出登录逻辑
+        handleLogout()
         break
     }
+  }
+
+  const handleLogout = () => {
+    // 清除本地存储的认证信息
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    
+    // 重定向到登录页面
+    navigate('/login')
   }
 
   // 获取当前选中的菜单项

@@ -7,44 +7,72 @@ import type {
   PaginatedResponse,
   TradingAdvice,
   TechnicalIndicator,
+  AuthResponse,
+  LoginRequest,
+  RegisterRequest,
 } from '@/types/api'
+
+// 认证相关 API
+export const authApi = {
+  // 用户登录
+  login: (data: LoginRequest) => {
+    return post<AuthResponse>('/api/v1/auth/login', data)
+  },
+
+  // 用户注册
+  register: (data: RegisterRequest) => {
+    return post<AuthResponse>('/api/v1/auth/register', data)
+  },
+
+  // 刷新token
+  refreshToken: () => {
+    return post<AuthResponse>('/api/v1/auth/refresh')
+  },
+
+  // 退出登录
+  logout: () => {
+    return post('/api/v1/auth/logout')
+  },
+
+  // 修改密码
+  changePassword: (data: { current_password: string; new_password: string }) => {
+    return post('/api/v1/auth/change-password', data)
+  },
+}
 
 // 股票相关 API
 export const stockApi = {
   // 获取股票列表
-  getStockList: (params: PaginationParams & {
+  getStockList: (params?: {
+    skip?: number
+    limit?: number
     search?: string
-    industry?: string
-    sortBy?: string
-    sortOrder?: 'asc' | 'desc'
   }) => {
-    return get<PaginatedResponse<Stock>>('/stocks', { params })
+    return get<{ items: Stock[], total: number, skip: number, limit: number }>('/api/v1/stocks/', { params })
   },
 
   // 获取股票详情
-  getStockDetail: (code: string) => {
-    return get<StockDetail>(`/stocks/${code}`)
+  getStockDetail: (stockId: string) => {
+    return get<StockDetail>(`/api/v1/stocks/${stockId}`)
   },
 
   // 获取股票价格历史
-  getStockPrices: (code: string, params: {
-    startDate?: string
-    endDate?: string
-    interval?: '1m' | '5m' | '15m' | '1h' | '1d'
+  getStockPrices: (stockId: string, params?: {
+    start_date?: string
+    end_date?: string
+    limit?: number
   }) => {
-    return get(`/stocks/${code}/prices`, { params })
+    return get(`/api/v1/stocks/${stockId}/prices`, { params })
   },
 
-  // 获取热门股票
-  getHotStocks: (limit = 10) => {
-    return get<Stock[]>('/stocks/hot', { params: { limit } })
+  // 获取股票技术指标
+  getStockIndicators: (stockId: string) => {
+    return get<TechnicalIndicator[]>(`/api/v1/stocks/${stockId}/indicators`)
   },
 
-  // 搜索股票
-  searchStocks: (keyword: string, limit = 20) => {
-    return get<Stock[]>('/stocks/search', { 
-      params: { keyword, limit } 
-    })
+  // 批量获取股票价格
+  getStockPricesBulk: (stockId: string, data: any) => {
+    return post(`/api/v1/stocks/${stockId}/prices/bulk`, data)
   },
 }
 
