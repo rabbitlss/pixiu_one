@@ -18,7 +18,7 @@ class AlphaVantageProvider(DataProvider):
     
     def __init__(self, api_key: Optional[str] = None, max_workers: int = 2):
         # Alpha Vantage免费版有严格的API限制
-        self.api_key = api_key or os.getenv('ALPHA_VANTAGE_API_KEY', 'demo')
+        self.api_key = api_key or os.getenv('ALPHA_VANTAGE_API_KEY', 'FS08JVTKRD8XBUGZ')
         self.base_url = "https://www.alphavantage.co/query"
         self.max_workers = max_workers  # 限制并发数
         self.executor = ThreadPoolExecutor(max_workers=max_workers)
