@@ -39,8 +39,13 @@ const createRequest = (): AxiosInstance => {
 
   // 响应拦截器
   instance.interceptors.response.use(
-    (response: AxiosResponse<ApiResponse>) => {
+    (response: AxiosResponse) => {
       const { data } = response
+
+      // 处理直接返回数据的情况（如认证接口）
+      if (!data.hasOwnProperty('success')) {
+        return response
+      }
 
       // 检查业务状态码
       if (data.success === false) {
@@ -142,7 +147,7 @@ export const post = <T = any>(
   url: string, 
   data?: any, 
   config?: AxiosRequestConfig
-): Promise<ApiResponse<T>> => {
+): Promise<T> => {
   return request.post(url, data, config).then(res => res.data)
 }
 

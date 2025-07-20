@@ -27,10 +27,10 @@ const Login: React.FC = () => {
     setLoading(true)
     try {
       const response = await authApi.login(values)
-      if (response.data) {
+      if (response) {
         // 保存token到localStorage
-        localStorage.setItem('token', response.data.access_token)
-        localStorage.setItem('user', JSON.stringify(response.data.user))
+        localStorage.setItem('token', response.access_token)
+        localStorage.setItem('user', JSON.stringify(response.user))
         
         message.success('登录成功')
         navigate('/dashboard')

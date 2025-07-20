@@ -5,7 +5,7 @@ from sqlalchemy import select, or_
 
 from app.db.database import get_db
 from app.models.user import User
-from app.schemas.auth import Token, LoginRequest, ChangePasswordRequest
+from app.schemas.auth import Token, TokenWithUser, LoginRequest, ChangePasswordRequest
 from app.schemas.user import UserCreate, User as UserSchema
 from app.schemas.common import SuccessResponse
 from app.core.config import settings
@@ -60,7 +60,7 @@ async def register(
     return db_user
 
 
-@router.post("/login", response_model=Token)
+@router.post("/login", response_model=TokenWithUser)
 async def login(
     login_data: LoginRequest,
     db: AsyncSession = Depends(get_db)
@@ -99,10 +99,11 @@ async def login(
         expires_delta=access_token_expires
     )
     
-    return Token(
+    return TokenWithUser(
         access_token=access_token,
         token_type="bearer",
-        expires_in=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60  # 返回秒数
+        expires_in=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,  # 返回秒数
+        user=UserSchema.model_validate(user)
     )
 
 

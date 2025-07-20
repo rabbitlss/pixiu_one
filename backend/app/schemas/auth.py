@@ -1,11 +1,19 @@
 from pydantic import BaseModel, Field
 from typing import Optional
+from app.schemas.user import User
 
 
 class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
     expires_in: int
+
+
+class TokenWithUser(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    expires_in: int
+    user: User
 
 
 class TokenData(BaseModel):

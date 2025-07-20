@@ -89,3 +89,323 @@ INFO:sqlalchemy.engine.Engine:[generated in 0.00006s] (1, '2025-07-17 16:00:00.0
 2025-07-20 11:04:10,233 INFO sqlalchemy.engine.Engine ROLLBACK
 INFO:sqlalchemy.engine.Engine:ROLLBACK
 INFO:     127.0.0.1:53004 - "GET /api/v1/stocks/1 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'app/services/providers/alphavantage_provider.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app.main:Shutting down Stock Information Collection System...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [67742]
+INFO:     Started server process [68046]
+INFO:     Waiting for application startup.
+INFO:app.main:Starting Stock Information Collection System...
+2025-07-20 11:09:43,345 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 11:09:43,345 INFO sqlalchemy.engine.Engine SELECT 1
+INFO:sqlalchemy.engine.Engine:SELECT 1
+2025-07-20 11:09:43,345 INFO sqlalchemy.engine.Engine [generated in 0.00006s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00006s] ()
+2025-07-20 11:09:43,345 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:app.main:Database connection established successfully
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'update_real_data.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app.main:Shutting down Stock Information Collection System...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68046]
+INFO:     Started server process [69478]
+INFO:     Waiting for application startup.
+INFO:app.main:Starting Stock Information Collection System...
+2025-07-20 14:36:32,399 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:36:32,399 INFO sqlalchemy.engine.Engine SELECT 1
+INFO:sqlalchemy.engine.Engine:SELECT 1
+2025-07-20 14:36:32,399 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] ()
+2025-07-20 14:36:32,400 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:app.main:Database connection established successfully
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'update_real_data.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app.main:Shutting down Stock Information Collection System...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [69478]
+INFO:     Started server process [69513]
+INFO:     Waiting for application startup.
+INFO:app.main:Starting Stock Information Collection System...
+2025-07-20 14:36:53,340 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:36:53,340 INFO sqlalchemy.engine.Engine SELECT 1
+INFO:sqlalchemy.engine.Engine:SELECT 1
+2025-07-20 14:36:53,340 INFO sqlalchemy.engine.Engine [generated in 0.00006s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00006s] ()
+2025-07-20 14:36:53,340 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:app.main:Database connection established successfully
+INFO:     Application startup complete.
+INFO:     127.0.0.1:56954 - "GET /api/v1/stocks/1 HTTP/1.1" 403 Forbidden
+2025-07-20 14:37:54,023 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:37:54,030 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 14:37:54,030 INFO sqlalchemy.engine.Engine [generated in 0.00012s] ('admin', 'admin')
+INFO:sqlalchemy.engine.Engine:[generated in 0.00012s] ('admin', 'admin')
+WARNING:passlib.handlers.bcrypt:(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.13/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-07-20 14:37:54,272 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:57051 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+2025-07-20 14:37:54,281 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:37:54,281 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 14:37:54,281 INFO sqlalchemy.engine.Engine [generated in 0.00007s] (1,)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] (1,)
+2025-07-20 14:37:54,282 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.id = ?
+2025-07-20 14:37:54,282 INFO sqlalchemy.engine.Engine [generated in 0.00008s] (1,)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00008s] (1,)
+2025-07-20 14:37:54,286 INFO sqlalchemy.engine.Engine SELECT stock_prices.id, stock_prices.stock_id, stock_prices.date, stock_prices.open, stock_prices.high, stock_prices.low, stock_prices.close, stock_prices.volume, stock_prices.adjusted_close, stock_prices.created_at 
+FROM stock_prices 
+WHERE stock_prices.stock_id = ? ORDER BY stock_prices.date DESC
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stock_prices.id, stock_prices.stock_id, stock_prices.date, stock_prices.open, stock_prices.high, stock_prices.low, stock_prices.close, stock_prices.volume, stock_prices.adjusted_close, stock_prices.created_at 
+FROM stock_prices 
+WHERE stock_prices.stock_id = ? ORDER BY stock_prices.date DESC
+ LIMIT ? OFFSET ?
+2025-07-20 14:37:54,286 INFO sqlalchemy.engine.Engine [generated in 0.00007s] (1, 1, 0)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] (1, 1, 0)
+2025-07-20 14:37:54,287 INFO sqlalchemy.engine.Engine SELECT stock_prices.id, stock_prices.stock_id, stock_prices.date, stock_prices.open, stock_prices.high, stock_prices.low, stock_prices.close, stock_prices.volume, stock_prices.adjusted_close, stock_prices.created_at 
+FROM stock_prices 
+WHERE stock_prices.stock_id = ? AND stock_prices.date <= ? ORDER BY stock_prices.date DESC
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stock_prices.id, stock_prices.stock_id, stock_prices.date, stock_prices.open, stock_prices.high, stock_prices.low, stock_prices.close, stock_prices.volume, stock_prices.adjusted_close, stock_prices.created_at 
+FROM stock_prices 
+WHERE stock_prices.stock_id = ? AND stock_prices.date <= ? ORDER BY stock_prices.date DESC
+ LIMIT ? OFFSET ?
+2025-07-20 14:37:54,287 INFO sqlalchemy.engine.Engine [generated in 0.00007s] (1, '2025-07-17 00:00:00.000000', 1, 0)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] (1, '2025-07-17 00:00:00.000000', 1, 0)
+2025-07-20 14:37:54,287 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:57058 - "GET /api/v1/stocks/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57425 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57425 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58205 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58371 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58453 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58552 - "GET /api/v1/stocks/ HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:58554 - "GET /api/v1/stocks/ HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:59556 - "POST /api/v1/auth/register HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:59658 - "POST /api/v1/auth/register HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:59754 - "POST /api/v1/auth/register HTTP/1.1" 422 Unprocessable Content
+2025-07-20 14:44:18,023 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:44:18,024 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 14:44:18,024 INFO sqlalchemy.engine.Engine [cached since 384s ago] ('testuser', 'test@example.com')
+INFO:sqlalchemy.engine.Engine:[cached since 384s ago] ('testuser', 'test@example.com')
+2025-07-20 14:44:18,024 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:59845 - "POST /api/v1/auth/register HTTP/1.1" 400 Bad Request
+2025-07-20 14:44:23,272 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:44:23,273 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 14:44:23,273 INFO sqlalchemy.engine.Engine [cached since 389.2s ago] ('testuser', 'testuser')
+INFO:sqlalchemy.engine.Engine:[cached since 389.2s ago] ('testuser', 'testuser')
+2025-07-20 14:44:23,499 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:59945 - "POST /api/v1/auth/login HTTP/1.1" 401 Unauthorized
+2025-07-20 14:44:30,117 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:44:30,118 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 14:44:30,118 INFO sqlalchemy.engine.Engine [cached since 396.1s ago] ('frontendtest', 'frontend@test.com')
+INFO:sqlalchemy.engine.Engine:[cached since 396.1s ago] ('frontendtest', 'frontend@test.com')
+2025-07-20 14:44:30,341 INFO sqlalchemy.engine.Engine INSERT INTO users (email, username, hashed_password, full_name, is_active, is_superuser, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (email, username, hashed_password, full_name, is_active, is_superuser, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2025-07-20 14:44:30,341 INFO sqlalchemy.engine.Engine [generated in 0.00014s] ('frontend@test.com', 'frontendtest', '$2b$12$uCNwOhwtmOpZOOuJ/Hlqt.4Ru/6jl9b4Z4FAS5avVI0q8m3PnV4oy', None, 1, 0, None)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00014s] ('frontend@test.com', 'frontendtest', '$2b$12$uCNwOhwtmOpZOOuJ/Hlqt.4Ru/6jl9b4Z4FAS5avVI0q8m3PnV4oy', None, 1, 0, None)
+2025-07-20 14:44:30,342 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+2025-07-20 14:44:30,344 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:44:30,344 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 14:44:30,344 INFO sqlalchemy.engine.Engine [generated in 0.00005s] (3,)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00005s] (3,)
+2025-07-20 14:44:30,345 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:60060 - "POST /api/v1/auth/register HTTP/1.1" 201 Created
+2025-07-20 14:44:36,919 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:44:36,919 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 14:44:36,920 INFO sqlalchemy.engine.Engine [cached since 402.9s ago] ('frontendtest', 'frontendtest')
+INFO:sqlalchemy.engine.Engine:[cached since 402.9s ago] ('frontendtest', 'frontendtest')
+2025-07-20 14:44:37,141 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:60158 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+2025-07-20 14:44:44,453 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 14:44:44,453 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 14:44:44,453 INFO sqlalchemy.engine.Engine [cached since 410.2s ago] (3,)
+INFO:sqlalchemy.engine.Engine:[cached since 410.2s ago] (3,)
+2025-07-20 14:44:44,456 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 14:44:44,456 INFO sqlalchemy.engine.Engine [generated in 0.00020s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00020s] ()
+2025-07-20 14:44:44,458 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 14:44:44,458 INFO sqlalchemy.engine.Engine [generated in 0.00014s] (20, 0)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00014s] (20, 0)
+2025-07-20 14:44:44,459 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:60267 - "GET /api/v1/stocks/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49571 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49885 - "OPTIONS /api/v1/stocks/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50045 - "POST /api/v1/auth/login HTTP/1.1" 422 Unprocessable Content
+2025-07-20 15:04:08,689 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:04:08,690 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 15:04:08,690 INFO sqlalchemy.engine.Engine [cached since 1575s ago] ('admin', 'admin')
+INFO:sqlalchemy.engine.Engine:[cached since 1575s ago] ('admin', 'admin')
+2025-07-20 15:04:08,913 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:50222 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'app/schemas/auth.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app.main:Shutting down Stock Information Collection System...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [69513]
+INFO:     Started server process [73382]
+INFO:     Waiting for application startup.
+INFO:app.main:Starting Stock Information Collection System...
+2025-07-20 15:04:42,843 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:04:42,844 INFO sqlalchemy.engine.Engine SELECT 1
+INFO:sqlalchemy.engine.Engine:SELECT 1
+2025-07-20 15:04:42,844 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] ()
+2025-07-20 15:04:42,844 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:app.main:Database connection established successfully
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'app/api/v1/endpoints/auth.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app.main:Shutting down Stock Information Collection System...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [73382]
+INFO:     Started server process [73429]
+INFO:     Waiting for application startup.
+INFO:app.main:Starting Stock Information Collection System...
+2025-07-20 15:04:50,560 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:04:50,561 INFO sqlalchemy.engine.Engine SELECT 1
+INFO:sqlalchemy.engine.Engine:SELECT 1
+2025-07-20 15:04:50,561 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] ()
+2025-07-20 15:04:50,561 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:app.main:Database connection established successfully
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'app/api/v1/endpoints/auth.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app.main:Shutting down Stock Information Collection System...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [73429]
+INFO:     Started server process [73456]
+INFO:     Waiting for application startup.
+INFO:app.main:Starting Stock Information Collection System...
+2025-07-20 15:05:06,056 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:05:06,056 INFO sqlalchemy.engine.Engine SELECT 1
+INFO:sqlalchemy.engine.Engine:SELECT 1
+2025-07-20 15:05:06,056 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] ()
+2025-07-20 15:05:06,057 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:app.main:Database connection established successfully
+INFO:     Application startup complete.
+2025-07-20 15:05:15,634 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:05:15,641 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 15:05:15,641 INFO sqlalchemy.engine.Engine [generated in 0.00013s] ('admin', 'admin')
+INFO:sqlalchemy.engine.Engine:[generated in 0.00013s] ('admin', 'admin')
+WARNING:passlib.handlers.bcrypt:(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.13/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-07-20 15:05:15,893 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:50776 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51290 - "GET /health HTTP/1.1" 200 OK
