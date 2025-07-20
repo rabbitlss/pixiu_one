@@ -1,0 +1,91 @@
+INFO:     Will watch for changes in these directories: ['/Users/lishanshan/projects/quantinfo_collect/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [67739] using StatReload
+INFO:     Started server process [67742]
+INFO:     Waiting for application startup.
+INFO:app.main:Starting Stock Information Collection System...
+2025-07-20 11:03:37,101 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 11:03:37,101 INFO sqlalchemy.engine.Engine SELECT 1
+INFO:sqlalchemy.engine.Engine:SELECT 1
+2025-07-20 11:03:37,101 INFO sqlalchemy.engine.Engine [generated in 0.00005s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00005s] ()
+2025-07-20 11:03:37,101 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:app.main:Database connection established successfully
+INFO:     Application startup complete.
+INFO:     127.0.0.1:52716 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52787 - "GET /api/v1/stocks HTTP/1.1" 307 Temporary Redirect
+2025-07-20 11:04:02,571 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 11:04:02,580 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 11:04:02,580 INFO sqlalchemy.engine.Engine [generated in 0.00013s] ('admin', 'admin')
+INFO:sqlalchemy.engine.Engine:[generated in 0.00013s] ('admin', 'admin')
+WARNING:passlib.handlers.bcrypt:(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.13/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-07-20 11:04:02,823 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:52912 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+2025-07-20 11:04:09,999 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 11:04:09,999 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 11:04:09,999 INFO sqlalchemy.engine.Engine [cached since 7.42s ago] ('admin', 'admin')
+INFO:sqlalchemy.engine.Engine:[cached since 7.42s ago] ('admin', 'admin')
+2025-07-20 11:04:10,218 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:52999 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+2025-07-20 11:04:10,227 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 11:04:10,227 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 11:04:10,227 INFO sqlalchemy.engine.Engine [generated in 0.00007s] (1,)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] (1,)
+2025-07-20 11:04:10,228 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.id = ?
+2025-07-20 11:04:10,228 INFO sqlalchemy.engine.Engine [generated in 0.00006s] (1,)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00006s] (1,)
+2025-07-20 11:04:10,231 INFO sqlalchemy.engine.Engine SELECT stock_prices.id, stock_prices.stock_id, stock_prices.date, stock_prices.open, stock_prices.high, stock_prices.low, stock_prices.close, stock_prices.volume, stock_prices.adjusted_close, stock_prices.created_at 
+FROM stock_prices 
+WHERE stock_prices.stock_id = ? ORDER BY stock_prices.date DESC
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stock_prices.id, stock_prices.stock_id, stock_prices.date, stock_prices.open, stock_prices.high, stock_prices.low, stock_prices.close, stock_prices.volume, stock_prices.adjusted_close, stock_prices.created_at 
+FROM stock_prices 
+WHERE stock_prices.stock_id = ? ORDER BY stock_prices.date DESC
+ LIMIT ? OFFSET ?
+2025-07-20 11:04:10,231 INFO sqlalchemy.engine.Engine [generated in 0.00007s] (1, 1, 0)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] (1, 1, 0)
+2025-07-20 11:04:10,232 INFO sqlalchemy.engine.Engine SELECT stock_prices.id, stock_prices.stock_id, stock_prices.date, stock_prices.open, stock_prices.high, stock_prices.low, stock_prices.close, stock_prices.volume, stock_prices.adjusted_close, stock_prices.created_at 
+FROM stock_prices 
+WHERE stock_prices.stock_id = ? AND stock_prices.date <= ? ORDER BY stock_prices.date DESC
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stock_prices.id, stock_prices.stock_id, stock_prices.date, stock_prices.open, stock_prices.high, stock_prices.low, stock_prices.close, stock_prices.volume, stock_prices.adjusted_close, stock_prices.created_at 
+FROM stock_prices 
+WHERE stock_prices.stock_id = ? AND stock_prices.date <= ? ORDER BY stock_prices.date DESC
+ LIMIT ? OFFSET ?
+2025-07-20 11:04:10,232 INFO sqlalchemy.engine.Engine [generated in 0.00006s] (1, '2025-07-17 16:00:00.000000', 1, 0)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00006s] (1, '2025-07-17 16:00:00.000000', 1, 0)
+2025-07-20 11:04:10,233 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:53004 - "GET /api/v1/stocks/1 HTTP/1.1" 200 OK

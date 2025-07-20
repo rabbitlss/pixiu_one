@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
@@ -67,4 +67,4 @@ class Alert(Base):
     
     # Relationships
     user = relationship("User", back_populates="alerts")
-    stock = relationship("Stock")
+    stock = relationship("Stock", foreign_keys=[stock_id])
