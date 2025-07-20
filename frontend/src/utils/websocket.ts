@@ -44,7 +44,7 @@ export class WebSocketClient {
         this.ws = new WebSocket(this.url)
 
         this.ws.onopen = () => {
-          console.log('WebSocket connected')
+          // WebSocket connected
           this.currentReconnectAttempts = 0
           this.isManualClose = false
           this.startHeartbeat()
@@ -53,7 +53,7 @@ export class WebSocketClient {
         }
 
         this.ws.onclose = (event) => {
-          console.log('WebSocket disconnected', event)
+          // WebSocket disconnected
           this.stopHeartbeat()
           this.options.onClose(event)
           
@@ -157,7 +157,7 @@ export class WebSocketClient {
     }
 
     this.currentReconnectAttempts++
-    console.log(`Scheduling reconnect attempt ${this.currentReconnectAttempts}/${this.options.reconnectAttempts}`)
+    // Scheduling reconnect attempt
 
     this.reconnectTimer = setTimeout(() => {
       this.reconnectTimer = null

@@ -9,6 +9,8 @@ const Login = lazy(() => import('@/pages/Login'))
 const Dashboard = lazy(() => import('@/pages/Dashboard'))
 const StockList = lazy(() => import('@/pages/Stock/List'))
 const StockDetail = lazy(() => import('@/pages/Stock/Detail'))
+const AlphaVantageData = lazy(() => import('@/pages/Stock/AlphaVantageData'))
+const StockDashboard = lazy(() => import('@/pages/StockDashboard'))
 const CompanyInfo = lazy(() => import('@/pages/Company'))
 const Analysis = lazy(() => import('@/pages/Analysis'))
 const Settings = lazy(() => import('@/pages/Settings'))
@@ -36,6 +38,8 @@ const Router: React.FC = () => {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="stocks">
             <Route index element={<StockList />} />
+            <Route path="alphavantage" element={<AlphaVantageData />} />
+            <Route path="dashboard" element={<StockDashboard />} />
             <Route path=":code" element={<StockDetail />} />
           </Route>
           <Route path="companies" element={<CompanyInfo />} />

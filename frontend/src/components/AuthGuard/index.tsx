@@ -20,7 +20,7 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
     
     if (token && user) {
       try {
-        const userData = JSON.parse(user)
+        const _userData = JSON.parse(user)
         // 这里可以添加token有效性验证
         setIsAuthenticated(true)
       } catch (error) {

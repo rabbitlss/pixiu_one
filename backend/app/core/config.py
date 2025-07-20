@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     DATABASE_URL: str = "sqlite+aiosqlite:///./stock_data.db"
     
     # CORS
-    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:8000"]
+    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "http://localhost:3003", "http://localhost:8000"]
     
     # Security
     SECRET_KEY: str = "your-secret-key-here-change-in-production"
@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     # External APIs
     STOCK_API_KEY: str = ""
     STOCK_API_BASE_URL: str = "https://api.example.com"
+    ALPHA_VANTAGE_API_KEY: str = "FS08JVTKRD8XBUGZ"
     
     class Config:
         env_file = ".env"

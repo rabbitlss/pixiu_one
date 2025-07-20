@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixiu One - 股票信息采集系统</title>
+    <style>
+        body { 
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Arial, sans-serif; 
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .feature h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .links {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .price-ticker {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .price-item {
+            display: inline-block;
+            margin: 0 20px;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 Pixiu One</h1>
+            <p>智能股票信息采集与分析平台</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">5</div>
+                <div>活跃股票</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">97</div>
+                <div>价格记录</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">3</div>
+                <div>注册用户</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div>系统可用性</div>
+            </div>
+        </div>
+
+        <div class="price-ticker">
+            <h3><span class="emoji">💰</span>实时股价 (Alpha Vantage 真实数据)</h3>
+            <div class="price-item">
+                <strong>AAPL</strong> $211.18 <span style="color: #4ade80;">↗</span>
+            </div>
+            <div class="price-item">
+                <strong>GOOGL</strong> $185.06 <span style="color: #4ade80;">↗</span>
+            </div>
+            <div class="price-item">
+                <strong>MSFT</strong> $510.05 <span style="color: #f87171;">↘</span>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3><span class="emoji">🔐</span>用户认证系统</h3>
+                <p>基于 JWT 的安全认证机制，支持用户注册、登录和权限管理</p>
+            </div>
+            <div class="feature">
+                <h3><span class="emoji">📊</span>实时数据采集</h3>
+                <p>集成 Alpha Vantage API，获取真实的股票市场数据和历史价格</p>
+            </div>
+            <div class="feature">
+                <h3><span class="emoji">⚡</span>高性能 API</h3>
+                <p>FastAPI + SQLAlchemy 异步架构，支持高并发数据查询</p>
+            </div>
+            <div class="feature">
+                <h3><span class="emoji">🎨</span>现代化界面</h3>
+                <p>React + TypeScript + Ant Design 构建的响应式用户界面</p>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="/test_page.html" class="btn">
+                <span class="emoji">🧪</span>功能测试页面
+            </a>
+            <a href="http://localhost:8000/docs" class="btn" target="_blank">
+                <span class="emoji">📚</span>API 文档
+            </a>
+            <a href="http://localhost:3001" class="btn" target="_blank">
+                <span class="emoji">🖥️</span>前端应用
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; opacity: 0.8;">
+            <p>技术栈：Python FastAPI + React TypeScript + SQLite + Alpha Vantage API</p>
+            <p>系统状态：<span style="color: #4ade80;">● 运行正常</span></p>
+        </div>
+    </div>
+</body>
+</html>

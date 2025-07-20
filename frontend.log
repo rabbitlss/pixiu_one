@@ -1,0 +1,12 @@
+
+> pixiu-one-frontend@0.0.0 dev
+> vite
+
+Port 3000 is in use, trying another one...
+Port 3001 is in use, trying another one...
+
+  VITE v5.4.19  ready in 97 ms
+
+  ➜  Local:   http://localhost:3002/
+  ➜  Network: http://192.168.2.118:3002/
+  ➜  Network: http://172.18.0.1:3002/

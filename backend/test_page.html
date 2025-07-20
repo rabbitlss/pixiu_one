@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Data System Test</title>
+    <style>
+        body { 
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Arial, sans-serif; 
+            margin: 20px; 
+            line-height: 1.6;
+        }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        .result { background: #f5f5f5; padding: 10px; margin: 10px 0; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+        pre { background: #f0f0f0; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>📈 Pixiu One - 股票信息采集系统</h1>
+    
+    <div class="section">
+        <h2>🔐 用户认证</h2>
+        <div>
+            <input type="text" id="username" placeholder="用户名" value="admin">
+            <input type="password" id="password" placeholder="密码" value="admin123!@#">
+            <button onclick="login()">登录</button>
+            <button onclick="logout()">退出登录</button>
+        </div>
+        <div id="auth-result" class="result"></div>
+    </div>
+
+    <div class="section">
+        <h2>📊 股票数据</h2>
+        <button onclick="getStocks()">获取股票列表</button>
+        <button onclick="getStockDetail(1)">AAPL详情</button>
+        <div id="stock-result" class="result"></div>
+    </div>
+
+    <div class="section">
+        <h2>💰 实时价格</h2>
+        <div id="price-display" class="result">
+            <div><strong>AAPL:</strong> <span id="aapl-price">加载中...</span></div>
+            <div><strong>GOOGL:</strong> <span id="googl-price">加载中...</span></div>
+            <div><strong>MSFT:</strong> <span id="msft-price">加载中...</span></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        let token = localStorage.getItem('token');
+
+        function updateAuthStatus() {
+            const status = token ? '已登录' : '未登录';
+            document.getElementById('auth-result').innerHTML = `状态: ${status}`;
+        }
+
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/v1/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    token = data.access_token;
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    document.getElementById('auth-result').innerHTML = 
+                        `<strong>登录成功!</strong><br>用户: ${data.user.username}<br>令牌: ${token.substring(0, 20)}...`;
+                } else {
+                    document.getElementById('auth-result').innerHTML = 
+                        `<strong>登录失败:</strong> ${data.detail || '未知错误'}`;
+                }
+            } catch (error) {
+                document.getElementById('auth-result').innerHTML = 
+                    `<strong>网络错误:</strong> ${error.message}`;
+            }
+        }
+
+        function logout() {
+            token = null;
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            updateAuthStatus();
+        }
+
+        async function getStocks() {
+            try {
+                const response = await fetch(`${API_BASE}/api/v1/stocks/`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    let html = '<strong>股票列表:</strong><br>';
+                    data.items.forEach(stock => {
+                        html += `${stock.symbol} - ${stock.name} (${stock.exchange})<br>`;
+                    });
+                    document.getElementById('stock-result').innerHTML = html;
+                } else {
+                    document.getElementById('stock-result').innerHTML = 
+                        `<strong>获取失败:</strong> ${data.detail || '需要登录'}`;
+                }
+            } catch (error) {
+                document.getElementById('stock-result').innerHTML = 
+                    `<strong>网络错误:</strong> ${error.message}`;
+            }
+        }
+
+        async function getStockDetail(id) {
+            try {
+                const response = await fetch(`${API_BASE}/api/v1/stocks/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    const latest = data.latest_price;
+                    let html = `<strong>${data.symbol} - ${data.name}</strong><br>`;
+                    html += `交易所: ${data.exchange}<br>`;
+                    html += `行业: ${data.sector}<br>`;
+                    if (latest) {
+                        html += `最新价格: $${latest.close} (${latest.date})<br>`;
+                        html += `成交量: ${latest.volume.toLocaleString()}<br>`;
+                    }
+                    document.getElementById('stock-result').innerHTML = html;
+                } else {
+                    document.getElementById('stock-result').innerHTML = 
+                        `<strong>获取失败:</strong> ${data.detail || '需要登录'}`;
+                }
+            } catch (error) {
+                document.getElementById('stock-result').innerHTML = 
+                    `<strong>网络错误:</strong> ${error.message}`;
+            }
+        }
+
+        // 初始化
+        updateAuthStatus();
+        
+        // 如果已登录，自动获取数据
+        if (token) {
+            getStocks();
+            getStockDetail(1);
+        }
+    </script>
+</body>
+</html>

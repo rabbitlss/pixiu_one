@@ -12,8 +12,12 @@ from app.api.dependencies import get_current_superuser
 from app.services.scheduler_service import scheduler_service
 from app.services.stock_data_service import StockDataService
 from app.services.providers.yfinance_provider import YFinanceProvider
+from app.api.v1.endpoints.data_collection import router as data_collection_router
 
 router = APIRouter()
+
+# 包含数据采集路由
+router.include_router(data_collection_router, prefix="/data-collection")
 
 
 @router.post("/update-stock-data", response_model=Dict[str, Any])

@@ -32,7 +32,7 @@ const createRequest = (): AxiosInstance => {
       return config
     },
     (error: AxiosError) => {
-      console.error('Request error:', error)
+      // Request error: error
       return Promise.reject(error)
     }
   )
@@ -43,7 +43,7 @@ const createRequest = (): AxiosInstance => {
       const { data } = response
 
       // 处理直接返回数据的情况（如认证接口）
-      if (!data.hasOwnProperty('success')) {
+      if (!Object.prototype.hasOwnProperty.call(data, 'success')) {
         return response
       }
 

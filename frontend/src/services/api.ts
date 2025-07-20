@@ -3,8 +3,6 @@ import type {
   Stock,
   StockDetail,
   Company,
-  PaginationParams,
-  PaginatedResponse,
   TradingAdvice,
   TechnicalIndicator,
   AuthResponse,
@@ -79,22 +77,33 @@ export const stockApi = {
 // 公司相关 API
 export const companyApi = {
   // 获取公司列表
-  getCompanyList: (params: PaginationParams & {
+  getCompanyList: (params: {
+    skip?: number
+    limit?: number
     search?: string
     industry?: string
     sector?: string
+    country?: string
+    min_market_cap?: number
+    max_market_cap?: number
   }) => {
-    return get<PaginatedResponse<Company>>('/companies', { params })
+    return get<{
+      items: Company[]
+      total: number
+      page: number
+      size: number
+      pages: number
+    }>('/api/v1/companies/', { params })
   },
 
   // 获取公司详情
   getCompanyDetail: (id: string) => {
-    return get<Company>(`/companies/${id}`)
+    return get<Company>(`/api/v1/companies/${id}`)
   },
 
   // 根据股票代码获取公司信息
   getCompanyByStock: (stockCode: string) => {
-    return get<Company>(`/companies/by-stock/${stockCode}`)
+    return get<Company>(`/api/v1/companies/by-stock/${stockCode}`)
   },
 }
 

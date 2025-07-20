@@ -19,6 +19,14 @@ from app.schemas.common import (
     SortParams, DateRangeParams,
     SuccessResponse, ErrorResponse
 )
+from app.schemas.company import (
+    Company, CompanyCreate, CompanyUpdate, CompanyDetailResponse, CompanySearchResponse,
+    FinancialMetrics, FinancialMetricsCreate,
+    MarketPosition, MarketPositionCreate,
+    CorporateAction, CorporateActionCreate,
+    ESGMetrics, ESGMetricsCreate,
+    AnalystRating, AnalystRatingCreate
+)
 
 __all__ = [
     # Stock schemas
@@ -40,5 +48,13 @@ __all__ = [
     # Common schemas
     "PaginationParams", "PaginatedResponse",
     "SortParams", "DateRangeParams",
-    "SuccessResponse", "ErrorResponse"
+    "SuccessResponse", "ErrorResponse",
+    
+    # Company schemas
+    "Company", "CompanyCreate", "CompanyUpdate", "CompanyDetailResponse", "CompanySearchResponse",
+    "FinancialMetrics", "FinancialMetricsCreate",
+    "MarketPosition", "MarketPositionCreate",
+    "CorporateAction", "CorporateActionCreate",
+    "ESGMetrics", "ESGMetricsCreate",
+    "AnalystRating", "AnalystRatingCreate"
 ]

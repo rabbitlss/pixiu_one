@@ -409,3 +409,361 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 INFO:sqlalchemy.engine.Engine:ROLLBACK
 INFO:     127.0.0.1:50776 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
 INFO:     127.0.0.1:51290 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51799 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52374 - "OPTIONS /api/v1/auth/login HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:52420 - "OPTIONS /api/v1/auth/login HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:52522 - "POST /api/v1/auth/login HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:52856 - "POST /api/v1/auth/login HTTP/1.1" 422 Unprocessable Content
+WARNING:  StatReload detected changes in 'app/core/config.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app.main:Shutting down Stock Information Collection System...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [73456]
+INFO:     Started server process [74072]
+INFO:     Waiting for application startup.
+INFO:app.main:Starting Stock Information Collection System...
+2025-07-20 15:11:06,938 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:11:06,938 INFO sqlalchemy.engine.Engine SELECT 1
+INFO:sqlalchemy.engine.Engine:SELECT 1
+2025-07-20 15:11:06,938 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s] ()
+2025-07-20 15:11:06,938 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:app.main:Database connection established successfully
+INFO:     Application startup complete.
+INFO:     127.0.0.1:53262 - "POST /api/v1/auth/login HTTP/1.1" 422 Unprocessable Content
+2025-07-20 15:12:08,634 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:12:08,640 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 15:12:08,640 INFO sqlalchemy.engine.Engine [generated in 0.00011s] ('admin', 'admin')
+INFO:sqlalchemy.engine.Engine:[generated in 0.00011s] ('admin', 'admin')
+WARNING:passlib.handlers.bcrypt:(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.13/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-07-20 15:12:08,886 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:53419 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+2025-07-20 15:12:22,466 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:12:22,466 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 15:12:22,466 INFO sqlalchemy.engine.Engine [cached since 13.83s ago] ('admin', 'admin')
+INFO:sqlalchemy.engine.Engine:[cached since 13.83s ago] ('admin', 'admin')
+2025-07-20 15:12:22,694 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:53521 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+2025-07-20 15:12:22,706 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:12:22,707 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 15:12:22,707 INFO sqlalchemy.engine.Engine [generated in 0.00008s] (1,)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00008s] (1,)
+2025-07-20 15:12:22,708 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 15:12:22,708 INFO sqlalchemy.engine.Engine [generated in 0.00006s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00006s] ()
+2025-07-20 15:12:22,709 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 15:12:22,709 INFO sqlalchemy.engine.Engine [generated in 0.00006s] (20, 0)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00006s] (20, 0)
+2025-07-20 15:12:22,710 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:53523 - "GET /api/v1/stocks/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54304 - "OPTIONS /api/v1/auth/login HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:54325 - "OPTIONS /api/v1/auth/login HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:54325 - "OPTIONS /api/v1/stocks/ HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:54325 - "OPTIONS /api/v1/stocks/1 HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:54804 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55391 - "OPTIONS /api/v1/auth/login HTTP/1.1" 200 OK
+2025-07-20 15:18:20,985 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:18:20,986 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = ? OR users.email = ?
+2025-07-20 15:18:20,986 INFO sqlalchemy.engine.Engine [cached since 372.3s ago] ('admin', 'admin')
+INFO:sqlalchemy.engine.Engine:[cached since 372.3s ago] ('admin', 'admin')
+2025-07-20 15:18:21,234 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:55391 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55393 - "OPTIONS /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55420 - "OPTIONS /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+2025-07-20 15:18:26,957 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:18:26,958 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 15:18:26,958 INFO sqlalchemy.engine.Engine [cached since 364.3s ago] (1,)
+INFO:sqlalchemy.engine.Engine:[cached since 364.3s ago] (1,)
+2025-07-20 15:18:26,959 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 15:18:26,959 INFO sqlalchemy.engine.Engine [cached since 364.3s ago] ()
+INFO:sqlalchemy.engine.Engine:[cached since 364.3s ago] ()
+2025-07-20 15:18:26,959 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 15:18:26,959 INFO sqlalchemy.engine.Engine [cached since 364.3s ago] (100, 0)
+INFO:sqlalchemy.engine.Engine:[cached since 364.3s ago] (100, 0)
+2025-07-20 15:18:26,960 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:55393 - "GET /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+2025-07-20 15:18:26,963 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:18:26,963 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 15:18:26,963 INFO sqlalchemy.engine.Engine [cached since 364.3s ago] (1,)
+INFO:sqlalchemy.engine.Engine:[cached since 364.3s ago] (1,)
+2025-07-20 15:18:26,964 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 15:18:26,964 INFO sqlalchemy.engine.Engine [cached since 364.3s ago] ()
+INFO:sqlalchemy.engine.Engine:[cached since 364.3s ago] ()
+2025-07-20 15:18:26,964 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 15:18:26,964 INFO sqlalchemy.engine.Engine [cached since 364.3s ago] (100, 0)
+INFO:sqlalchemy.engine.Engine:[cached since 364.3s ago] (100, 0)
+2025-07-20 15:18:26,965 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:55393 - "GET /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+2025-07-20 15:18:30,641 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:18:30,641 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 15:18:30,642 INFO sqlalchemy.engine.Engine [cached since 367.9s ago] (1,)
+INFO:sqlalchemy.engine.Engine:[cached since 367.9s ago] (1,)
+2025-07-20 15:18:30,643 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 15:18:30,644 INFO sqlalchemy.engine.Engine [cached since 367.9s ago] ()
+INFO:sqlalchemy.engine.Engine:[cached since 367.9s ago] ()
+2025-07-20 15:18:30,644 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 15:18:30,644 INFO sqlalchemy.engine.Engine [cached since 367.9s ago] (100, 0)
+INFO:sqlalchemy.engine.Engine:[cached since 367.9s ago] (100, 0)
+2025-07-20 15:18:30,645 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:55393 - "GET /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+2025-07-20 15:18:30,648 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:18:30,648 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 15:18:30,648 INFO sqlalchemy.engine.Engine [cached since 367.9s ago] (1,)
+INFO:sqlalchemy.engine.Engine:[cached since 367.9s ago] (1,)
+2025-07-20 15:18:30,649 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 15:18:30,649 INFO sqlalchemy.engine.Engine [cached since 367.9s ago] ()
+INFO:sqlalchemy.engine.Engine:[cached since 367.9s ago] ()
+2025-07-20 15:18:30,650 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 15:18:30,650 INFO sqlalchemy.engine.Engine [cached since 367.9s ago] (100, 0)
+INFO:sqlalchemy.engine.Engine:[cached since 367.9s ago] (100, 0)
+2025-07-20 15:18:30,651 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:55393 - "GET /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+2025-07-20 15:18:46,814 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:18:46,814 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 15:18:46,814 INFO sqlalchemy.engine.Engine [cached since 384.1s ago] (1,)
+INFO:sqlalchemy.engine.Engine:[cached since 384.1s ago] (1,)
+2025-07-20 15:18:46,815 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 15:18:46,815 INFO sqlalchemy.engine.Engine [cached since 384.1s ago] ()
+INFO:sqlalchemy.engine.Engine:[cached since 384.1s ago] ()
+2025-07-20 15:18:46,816 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 15:18:46,816 INFO sqlalchemy.engine.Engine [cached since 384.1s ago] (100, 0)
+INFO:sqlalchemy.engine.Engine:[cached since 384.1s ago] (100, 0)
+2025-07-20 15:18:46,816 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:55422 - "GET /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+2025-07-20 15:18:46,818 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:18:46,818 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 15:18:46,818 INFO sqlalchemy.engine.Engine [cached since 384.1s ago] (1,)
+INFO:sqlalchemy.engine.Engine:[cached since 384.1s ago] (1,)
+2025-07-20 15:18:46,819 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 15:18:46,819 INFO sqlalchemy.engine.Engine [cached since 384.1s ago] ()
+INFO:sqlalchemy.engine.Engine:[cached since 384.1s ago] ()
+2025-07-20 15:18:46,819 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 15:18:46,819 INFO sqlalchemy.engine.Engine [cached since 384.1s ago] (100, 0)
+INFO:sqlalchemy.engine.Engine:[cached since 384.1s ago] (100, 0)
+2025-07-20 15:18:46,819 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:55422 - "GET /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+2025-07-20 15:18:48,632 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:18:48,632 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 15:18:48,632 INFO sqlalchemy.engine.Engine [cached since 385.9s ago] (1,)
+INFO:sqlalchemy.engine.Engine:[cached since 385.9s ago] (1,)
+2025-07-20 15:18:48,634 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 15:18:48,634 INFO sqlalchemy.engine.Engine [cached since 385.9s ago] ()
+INFO:sqlalchemy.engine.Engine:[cached since 385.9s ago] ()
+2025-07-20 15:18:48,635 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 15:18:48,635 INFO sqlalchemy.engine.Engine [cached since 385.9s ago] (100, 0)
+INFO:sqlalchemy.engine.Engine:[cached since 385.9s ago] (100, 0)
+2025-07-20 15:18:48,636 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:55422 - "GET /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+2025-07-20 15:18:48,648 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-07-20 15:18:48,648 INFO sqlalchemy.engine.Engine SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.email, users.username, users.hashed_password, users.full_name, users.is_active, users.is_superuser, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-20 15:18:48,648 INFO sqlalchemy.engine.Engine [cached since 385.9s ago] (1,)
+INFO:sqlalchemy.engine.Engine:[cached since 385.9s ago] (1,)
+2025-07-20 15:18:48,650 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM stocks 
+WHERE stocks.is_active = 1
+2025-07-20 15:18:48,650 INFO sqlalchemy.engine.Engine [cached since 385.9s ago] ()
+INFO:sqlalchemy.engine.Engine:[cached since 385.9s ago] ()
+2025-07-20 15:18:48,651 INFO sqlalchemy.engine.Engine SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:SELECT stocks.id, stocks.symbol, stocks.name, stocks.exchange, stocks.sector, stocks.industry, stocks.market_cap, stocks.is_active, stocks.created_at, stocks.updated_at 
+FROM stocks 
+WHERE stocks.is_active = 1 ORDER BY stocks.symbol
+ LIMIT ? OFFSET ?
+2025-07-20 15:18:48,651 INFO sqlalchemy.engine.Engine [cached since 385.9s ago] (100, 0)
+INFO:sqlalchemy.engine.Engine:[cached since 385.9s ago] (100, 0)
+2025-07-20 15:18:48,652 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     127.0.0.1:55422 - "GET /api/v1/stocks/?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57542 - "GET /health HTTP/1.1" 200 OK

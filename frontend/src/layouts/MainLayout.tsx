@@ -11,6 +11,7 @@ import {
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  ApiOutlined,
 } from '@ant-design/icons'
 import type { MenuProps } from 'antd'
 
@@ -36,6 +37,17 @@ const MainLayout: React.FC = () => {
       key: '/stocks',
       icon: <StockOutlined />,
       label: '股票信息',
+      children: [
+        {
+          key: '/stocks',
+          label: '股票列表',
+        },
+        {
+          key: '/stocks/alphavantage',
+          icon: <ApiOutlined />,
+          label: 'Alpha Vantage 数据',
+        },
+      ],
     },
     {
       key: '/companies',
@@ -96,6 +108,7 @@ const MainLayout: React.FC = () => {
   // 获取当前选中的菜单项
   const getSelectedKey = () => {
     const path = location.pathname
+    if (path === '/stocks/alphavantage') return '/stocks/alphavantage'
     if (path.startsWith('/stocks')) return '/stocks'
     return path
   }

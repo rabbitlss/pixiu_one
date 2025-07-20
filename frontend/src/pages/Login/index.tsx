@@ -7,7 +7,6 @@ import {
   Typography, 
   message, 
   Divider,
-  Space,
   Checkbox
 } from 'antd'
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons'
@@ -27,16 +26,20 @@ const Login: React.FC = () => {
     setLoading(true)
     try {
       const response = await authApi.login(values)
-      if (response) {
+      if (response && response.access_token) {
         // 保存token到localStorage
         localStorage.setItem('token', response.access_token)
         localStorage.setItem('user', JSON.stringify(response.user))
         
         message.success('登录成功')
         navigate('/dashboard')
+      } else {
+        message.error('登录响应格式错误')
       }
     } catch (error: any) {
-      message.error(error.message || '登录失败')
+      // 记录登录错误详情
+      const errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || '登录失败'
+      message.error(errorMessage)
     } finally {
       setLoading(false)
     }
@@ -46,12 +49,14 @@ const Login: React.FC = () => {
     setLoading(true)
     try {
       const response = await authApi.register(values)
-      if (response.data) {
+      if (response) {
         message.success('注册成功，请登录')
         setIsLogin(true)
       }
     } catch (error: any) {
-      message.error(error.message || '注册失败')
+      // Register error: error
+      const errorMessage = error.response?.data?.detail || error.message || '注册失败'
+      message.error(errorMessage)
     } finally {
       setLoading(false)
     }
